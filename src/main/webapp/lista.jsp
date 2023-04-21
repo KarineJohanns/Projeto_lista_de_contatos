@@ -70,7 +70,7 @@
                 <td>
                     <div class="d-flex align-items-center">
                         <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                src="./imagens/${contato.imageFileName}"
                                 alt=""
                                 style="width: 45px; height: 45px"
                                 class="rounded-circle"

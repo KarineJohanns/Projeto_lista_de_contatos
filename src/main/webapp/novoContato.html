@@ -46,7 +46,11 @@
 <h1 class="titulo">Cadastro de Contatos</h1>
 <!-- Formulario cadastro -->
 <div class="container container-formulario">
-    <form action="ContatoCreateAndFind" method="POST" class="row g-3">
+    <form action="ContatoCreateAndFind" method="POST" class="row g-3" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+            <input type="submit"  id="Add Image">
+        </div>
         <div class="col-md-6">
             <label class="form-label">Nome Completo</label>
             <input name="nome" maxlength="40" type="text" class="form-control" id="inputNome"

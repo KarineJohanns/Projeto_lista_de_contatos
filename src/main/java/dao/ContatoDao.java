@@ -14,7 +14,7 @@ public class ContatoDao implements CRUD{
 
     public static void create(Contato contato){
 
-        sql = "INSERT INTO pessoa VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO pessoa VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -29,6 +29,7 @@ public class ContatoDao implements CRUD{
             preparedStatement.setString(8, contato.getNumero());
             preparedStatement.setString(9, contato.getCidade());
             preparedStatement.setString(10, contato.getEstado());
+            preparedStatement.setString(11, contato.getimageFileName());
 
             preparedStatement.executeUpdate();
 
@@ -49,6 +50,7 @@ public class ContatoDao implements CRUD{
             preparedStatement.setInt(1, contatoId);
             preparedStatement.executeUpdate();
             System.out.println("--Correct delete on contato");
+
 
         } catch (SQLException e) {
             System.out.println("--Incorrect delete on contato");
@@ -75,6 +77,8 @@ public class ContatoDao implements CRUD{
                 contato.setEndereco(resultSet.getString("endereco"));
                 contato.setCidade(resultSet.getString("cidade"));
                 contato.setEstado(resultSet.getString("estado"));
+                contato.setimageFileName(resultSet.getString("imageFileName"));
+
 
                 contatos.add(contato);
             }

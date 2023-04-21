@@ -12,7 +12,7 @@ public class Contato {
     private String numero;
     private String cidade;
     private String estado;
-    private String data_nascimento;
+    private String imageFileName;
 
 
     public int getId() {
@@ -103,12 +103,12 @@ public class Contato {
         this.estado = estado;
     }
 
-    public String getData_nascimento() {
-        return data_nascimento;
+    public String getimageFileName() {
+        return imageFileName;
     }
 
-    public void setData_nascimento(String data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setimageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
     }
 
 
@@ -126,7 +126,7 @@ public class Contato {
                 ", numero='" + numero + '\'' +
                 ", cidade='" + cidade + '\'' +
                 ", estado='" + estado + '\'' +
-                ", data_nascimento='" + data_nascimento + '\'' +
+                ", imageFileName='" + imageFileName + '\'' +
                 '}';
     }
 }

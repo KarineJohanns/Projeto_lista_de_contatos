@@ -6,9 +6,12 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import model.Contato;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
+@MultipartConfig
 @WebServlet(name = "ContatoCreateAndFind", value = "/ContatoCreateAndFind")
 public class ContatoCreateAndFind extends HttpServlet {
     @Override
@@ -32,6 +35,25 @@ public class ContatoCreateAndFind extends HttpServlet {
 
         Contato contato = new Contato();
 
+        Part file = request.getPart("image");
+        String imageFileName = file.getSubmittedFileName();
+        System.out.println("arquivo " + imageFileName);
+
+        String uploadPath="F:/Java/contato/src/main/webapp/imagens/"+imageFileName;
+        System.out.println("pasta imagens "+ uploadPath);
+
+        try {
+            FileOutputStream fos = new FileOutputStream(uploadPath);
+            InputStream is = file.getInputStream();
+
+            byte[] data = new byte[is.available()];
+            is.read(data);
+            fos.write(data);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         contato.setNome(request.getParameter("nome"));
         contato.setTelefone(request.getParameter("telefone"));
         contato.setCelular(request.getParameter("celular"));
@@ -42,6 +64,7 @@ public class ContatoCreateAndFind extends HttpServlet {
         contato.setNumero(request.getParameter("numero"));
         contato.setCidade(request.getParameter("cidade"));
         contato.setEstado(request.getParameter("estado"));
+        contato.setimageFileName(imageFileName);
 
 
         ContatoDao.create(contato);

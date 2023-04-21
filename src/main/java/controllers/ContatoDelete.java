@@ -5,6 +5,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
+import java.io.File;
 import java.io.IOException;
 
 @WebServlet(name = "ContatoDelete", value = "/ContatoDelete")
